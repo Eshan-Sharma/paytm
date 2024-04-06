@@ -128,7 +128,10 @@ router.post("/signin", async (req, res) => {
       },
       JWT_SECRET
     );
-
+    await Account.create({
+      userId,
+      balance: 1 + Math.random() * 10000,
+    });
     res.json({
       token: token,
     });
